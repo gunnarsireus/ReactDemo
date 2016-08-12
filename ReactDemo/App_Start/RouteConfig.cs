@@ -25,7 +25,6 @@ namespace ReactDemo
             defaults: new { controller = "Home", action = "AddComment" }
             );
 
-
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

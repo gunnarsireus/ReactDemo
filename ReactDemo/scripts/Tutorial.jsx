@@ -9,22 +9,25 @@
     xhr.send();
   },
   handleCommentSubmit: function(comment) {
-      var data = new FormData();
-      data.append('Author', comment.Author);
-      data.append('Text', comment.Text);
+    var comments = this.state.data;
+    var newComments = comments.concat([comment]);
+    this.setState({data: newComments});
 
-      var xhr = new XMLHttpRequest();
-      xhr.open('post', this.props.submitUrl, true);
-      xhr.onload = function () {
-          this.loadCommentsFromServer();
-      }.bind(this);
-      xhr.send(data);
+    var data = new FormData();
+    data.append('Author', comment.Author);
+    data.append('Text', comment.Text);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('post', this.props.submitUrl, true);
+    xhr.onload = function() {
+      this.loadCommentsFromServer();
+    }.bind(this);
+    xhr.send(data);
   },
   getInitialState: function() {
-    return {data: []};
+    return { data: this.props.initialData };
   },
   componentDidMount: function() {
-    this.loadCommentsFromServer();
     window.setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
   render: function() {
@@ -100,9 +103,9 @@ var data = [
   { Author: "Jordan Walke", Text: "This is *another* comment" }
 ];
 
-ReactDOM.render(
-  <CommentBox url="/comments" submitUrl="/comments/new" pollInterval={2000} />,
-  document.getElementById('content')
-);
+//ReactDOM.render(
+//  <CommentBox url="/comments" submitUrl="/comments/new" pollInterval={2000} />,
+//  document.getElementById('content')
+//);
 
 
