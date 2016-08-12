@@ -94,7 +94,6 @@ var Comment = React.createClass({
   }
 });
 
-
 var data = [
   { Author: "Daniel Lo Nigro", Text: "Hello ReactJS.NET World!" },
   { Author: "Pete Hunt", Text: "This is one comment" },
