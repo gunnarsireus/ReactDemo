@@ -9,11 +9,13 @@
 </head>
 <body>
     @*<div id="content"></div>*@
-    @Html.React("CommentBox", new
+    @Html.React("Board", new
 {
     initialData = Model,
     url = Url.Action("Comments"),
     submitUrl = Url.Action("AddComment"),
+    editUrl = Url.Action("EditComment"),
+    deleteUrl = Url.Action("DeleteComment"),
     pollInterval = 2000,
 })
     <script src="https://fb.me/react-15.0.1.js"></script>

@@ -26,6 +26,18 @@ namespace ReactDemo
             );
 
             routes.MapRoute(
+            name: "EditComment",
+            url: "comments/edit/{id}",
+            defaults: new { controller = "Home", action = "EditComment", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+            name: "DeleteComment",
+            url: "comments/delete/{id}",
+            defaults: new { controller = "Home", action = "DeleteComment", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

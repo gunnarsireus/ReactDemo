@@ -51,5 +51,17 @@ namespace ReactDemo.Controllers
             _comments.Add(comment);
             return Content("Success :)", "application/json");
         }
+        [HttpPost]
+        public ActionResult EditComment(string text, int id)
+        {
+            _comments[id].Text = text;
+            return Json(_comments, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public ActionResult DeleteComment(int id)
+        {
+            _comments.Remove(_comments[id]);
+            return Json(_comments, JsonRequestBehavior.AllowGet);
+        }
     }
 }
