@@ -70,11 +70,11 @@ var CommentList = React.createClass({
         var data = new FormData();
         data.append('id', id);
         var xhr = new XMLHttpRequest();
-        xhr.open('get', this.props.deleteUrl + "/" + id, true);
+        xhr.open('post', this.props.deleteUrl + "/" + id, true);
         xhr.onload = function () {
             this.loadCommentsFromServer();
         }.bind(this);
-        xhr.send(data);
+        xhr.send(data); 
     },
 
     eachComment: function (comment,i) {

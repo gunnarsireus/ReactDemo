@@ -57,7 +57,7 @@ namespace ReactDemo.Controllers
             _comments[id].Text = text;
             return Json(_comments, JsonRequestBehavior.AllowGet);
         }
-        [HttpGet]
+        [HttpPost]
         public ActionResult DeleteComment(int id)
         {
             _comments.Remove(_comments[id]);
