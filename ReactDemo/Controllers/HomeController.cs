@@ -49,19 +49,19 @@ namespace ReactDemo.Controllers
         public ActionResult AddComment(CommentModel comment)
         {
             _comments.Add(comment);
-            return Content("Success :)", "application/json");
+            return Content("Success :)");
         }
         [HttpPost]
         public ActionResult EditComment(string text, int id)
         {
             _comments[id].Text = text;
-            return Json(_comments, JsonRequestBehavior.AllowGet);
+            return Content("Success :)");
         }
         [HttpPost]
         public ActionResult DeleteComment(int id)
         {
             _comments.Remove(_comments[id]);
-            return Json(_comments, JsonRequestBehavior.AllowGet);
+            return Content("Success :)");
         }
     }
 }

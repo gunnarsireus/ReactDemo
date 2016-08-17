@@ -1,13 +1,14 @@
 ﻿var Board = React.createClass({
-  loadCommentsFromServer: function() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('get', this.props.url, true);
-    xhr.onload = function() {
-      var data = JSON.parse(xhr.responseText);
-      this.setState({ data: data });
-    }.bind(this);
-    xhr.send();
-  },
+
+    loadCommentsFromServer: function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', this.props.url, true);
+        xhr.onload = function () {
+            var data = JSON.parse(xhr.responseText);
+            this.setState({ data: data });
+        }.bind(this);
+        xhr.send();
+    },
   handleCommentSubmit: function(comment) {
     var comments = this.state.data;
     var newComments = comments.concat([comment]);
@@ -20,7 +21,7 @@
     var xhr = new XMLHttpRequest();
     xhr.open('post', this.props.submitUrl, true);
     xhr.onload = function() {
-      this.loadCommentsFromServer();
+      this.statics.loadCommentsFromServer();
     }.bind(this);
     xhr.send(data);
   },
@@ -44,15 +45,15 @@
 
 var CommentList = React.createClass({
 
-    loadCommentsFromServer: function () {
-        var xhr = new XMLHttpRequest();
-        xhr.open('get', this.props.url, true);
-        xhr.onload = function () {
-            var data = JSON.parse(xhr.responseText);
-            this.setState({ data: data });
-        }.bind(this);
-        //xhr.send();
-    },
+    //loadCommentsFromServer: function () {
+    //    var xhr = new XMLHttpRequest();
+    //    xhr.open('get', this.props.url, true);
+    //    xhr.onload = function () {
+    //        var data = JSON.parse(xhr.responseText);
+    //        this.setState({ data: data });
+    //    }.bind(this);
+    //    //xhr.send();
+    //},
     handleCommentEdit: function (newText, id) {
         var data = new FormData();
         data.append('text', newText);
@@ -61,7 +62,7 @@ var CommentList = React.createClass({
         var xhr = new XMLHttpRequest();
         xhr.open('post', this.props.editUrl + "/" + id, true);
         xhr.onload = function () {
-            this.loadCommentsFromServer();
+            //this.loadCommentsFromServer();
         }.bind(this);
         xhr.send(data);
     },
@@ -72,7 +73,7 @@ var CommentList = React.createClass({
         var xhr = new XMLHttpRequest();
         xhr.open('post', this.props.deleteUrl + "/" + id, true);
         xhr.onload = function () {
-            this.loadCommentsFromServer();
+            //this.loadCommentsFromServer();
         }.bind(this);
         xhr.send(data); 
     },
