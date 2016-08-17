@@ -51,7 +51,7 @@ var CommentList = React.createClass({
             var data = JSON.parse(xhr.responseText);
             this.setState({ data: data });
         }.bind(this);
-        xhr.send();
+        //xhr.send();
     },
     handleCommentEdit: function (newText, id) {
         var data = new FormData();
