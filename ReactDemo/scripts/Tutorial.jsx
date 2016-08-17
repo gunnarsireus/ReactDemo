@@ -83,33 +83,52 @@ var CommentForm = React.createClass({
 });
 
 var Comment = React.createClass({
+    getInitialState: function () {
+        return { editing: false }
+    },
     edit: function () {
-        //this.setState({ editing: true });
-        alert("edit");
+        this.setState({ editing: true });
     },
     remove: function () {
-        //console.log("Removing comment");
-        //this.props.deleteFromBoard(this.props.index);
-        alert("remove");
+        console.log("Removing comment");
+        this.props.deleteFromBoard(this.props.index);
     },
     save: function () {
-        //this.props.updateCommentText(this.refs.newText.value, this.props.index);
-        //this.setState({ editing: false });
-        alert("save");
+        this.props.updateCommentText(this.refs.newText.value, this.props.index);
+        this.setState({ editing: false });
     },
-  render: function() {
-    var converter = new Showdown.converter();
-    var rawMarkup = converter.makeHtml(this.props.children.toString());
-    return (
-      <div className="comment">
-        <h2 className="commentAuthor">{this.props.author}
-        </h2>
-        <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
-        <button onClick={this.edit} className="btn-primary">Edit</button>
-        <button onClick={this.remove} className="btn-danger">Remove</button>
-      </div>
+
+    renderNormal: function () {
+      var converter = new Showdown.converter();
+      var rawMarkup = converter.makeHtml(this.props.children.toString());
+      return (
+        <div className="commentContainer">
+          <h2 className="commentAuthor">{this.props.author}</h2>
+          <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
+          <button onClick={this.edit} className="btn-primary">Edit</button>
+          <button onClick={this.remove} className="btn-danger">Remove</button>
+        </div>
+      );
+    },
+
+    renderForm: function () {  
+        return (
+            <div className="commentContainer">
+                <h2 className="commentAuthor">{this.props.author}</h2>
+                <textArea ref="newText"  defaultValue={this.props.children}></textArea>
+               <button onClick={this.save}   className="btn-success">Save</button>
+            </div>
     );
-  }
+    },
+
+    render: function () {
+        if (this.state.editing) {
+            return this.renderForm();
+        }
+        else {
+            return this.renderNormal();
+        }
+    }
 });
 
 var data = [
