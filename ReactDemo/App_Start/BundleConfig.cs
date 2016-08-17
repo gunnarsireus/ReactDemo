@@ -16,7 +16,7 @@ namespace ReactDemo
             // Forces files to be combined and minified in debug mode
             // Only used here to demonstrate how combination/minification works
             // Normally you would use unminified versions in debug mode.
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

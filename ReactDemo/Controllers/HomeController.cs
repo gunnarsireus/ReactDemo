@@ -49,7 +49,7 @@ namespace ReactDemo.Controllers
         public ActionResult AddComment(CommentModel comment)
         {
             _comments.Add(comment);
-            return Content("Success :)");
+            return Content("Success :)", "application/json");
         }
     }
 }
