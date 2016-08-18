@@ -9,9 +9,9 @@ namespace ReactDemo
         public static void Configure()
         {
             ReactSiteConfiguration.Configuration
-                .AddScript("~/Scripts/showdown.js")
-                .AddScript("~/Scripts/Tutorial.jsx")
-                .AddScript("~/Scripts/SetIntervalMixin.jsx");
+                .AddScript("~/js/3PP/Showdown.js")
+                .AddScript("~/js/Tutorial.jsx")
+                .AddScript("~/js/3PP/SetIntervalMixin.jsx");
         }
     }
 }
