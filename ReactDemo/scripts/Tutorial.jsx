@@ -45,15 +45,6 @@
 
 var CommentList = React.createClass({
 
-    //loadCommentsFromServer: function () {
-    //    var xhr = new XMLHttpRequest();
-    //    xhr.open('get', this.props.url, true);
-    //    xhr.onload = function () {
-    //        var data = JSON.parse(xhr.responseText);
-    //        this.setState({ data: data });
-    //    }.bind(this);
-    //    //xhr.send();
-    //},
     handleCommentEdit: function (newText, id) {
         var data = new FormData();
         data.append('text', newText);
@@ -61,9 +52,6 @@ var CommentList = React.createClass({
 
         var xhr = new XMLHttpRequest();
         xhr.open('post', this.props.editUrl + "/" + id, true);
-        xhr.onload = function () {
-            //this.loadCommentsFromServer();
-        }.bind(this);
         xhr.send(data);
     },
 
@@ -72,9 +60,6 @@ var CommentList = React.createClass({
         data.append('id', id);
         var xhr = new XMLHttpRequest();
         xhr.open('post', this.props.deleteUrl + "/" + id, true);
-        xhr.onload = function () {
-            //this.loadCommentsFromServer();
-        }.bind(this);
         xhr.send(data); 
     },
 
