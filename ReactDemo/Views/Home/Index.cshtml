@@ -10,10 +10,14 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    @*<div id="content"></div>*@
+ @Html.React("TickTock", new { })
+<br/>
+<br/>
+
     @Html.React("Board", new
 {
     initialData = Model,
+    //initialData = new List<ReactDemo.Models.CommentModel>().ToArray(),
     url = Url.Action("Comments"),
     submitUrl = Url.Action("AddComment"),
     editUrl = Url.Action("EditComment"),

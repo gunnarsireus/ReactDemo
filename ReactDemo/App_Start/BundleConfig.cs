@@ -10,7 +10,8 @@ namespace ReactDemo
         {
             bundles.Add(new BabelBundle("~/bundles/main").Include(
                 "~/Scripts/Tutorial.jsx",
-                "~/Scripts/showdown.js"
+                "~/Scripts/showdown.js",
+                "~/Scripts/SetIntervalMixin.jsx"
             ));
 
             // Forces files to be combined and minified in debug mode

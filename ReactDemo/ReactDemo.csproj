@@ -215,6 +215,7 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\Tutorial.jsx" />
+    <Content Include="Scripts\SetIntervalMixin.jsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -10,7 +10,8 @@ namespace ReactDemo
         {
             ReactSiteConfiguration.Configuration
                 .AddScript("~/Scripts/showdown.js")
-                .AddScript("~/Scripts/Tutorial.jsx");
+                .AddScript("~/Scripts/Tutorial.jsx")
+                .AddScript("~/Scripts/SetIntervalMixin.jsx");
         }
     }
 }

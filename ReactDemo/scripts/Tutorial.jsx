@@ -48,6 +48,9 @@
 
 
 var CommentList = React.createClass({
+    getInitialState: function() {
+        return {comments:this.props.comments}
+    },
 
     handleCommentEdit: function (newText, id) {
         var data = new FormData();
@@ -57,7 +60,7 @@ var CommentList = React.createClass({
         var xhr = new XMLHttpRequest();
         xhr.open("post", this.props.editUrl + "/" + id, true);
         xhr.send(data);
-        var arr = this.props.comments;
+        var arr = this.state.comments;
         arr[id].Text = newText;
         this.setState({ comments: arr });
     },
@@ -68,7 +71,7 @@ var CommentList = React.createClass({
         var xhr = new XMLHttpRequest();
         xhr.open("post", this.props.deleteUrl + "/" + id, true);
         xhr.send(data);
-        var arr = this.props.comments;
+        var arr = this.state.comments;
         arr.splice(id, 1);
         this.setState({ comments: arr });
     },
@@ -80,7 +83,7 @@ var CommentList = React.createClass({
     },
 
     render: function () {
-        var commentNodes = this.props.comments.map(this.eachComment);
+        var commentNodes = this.state.comments.map(this.eachComment);
         return (<div className="commentList">
           {commentNodes}
       </div>
