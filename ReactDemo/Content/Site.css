@@ -25,11 +25,15 @@ textarea {
 
 .commentText {
     background-color: green;
-    margin: 20px;
 }
 
 .commentAuthor {
     background-color: yellow;
+        border: solid;
+}
+
+.commentList {
+    border: solid;
 }
 
 .board {

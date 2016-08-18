@@ -10,6 +10,7 @@
         xhr.send();
         console.log("hej");
     },
+
   handleCommentSubmit: function(comment) {
     var comments = this.state.comments;
     var newComments = comments.concat([comment]);
@@ -26,12 +27,15 @@
     }.bind(this);
     xhr.send(data);
   },
+
   getInitialState: function() {
     return { comments: this.props.initialData };
   },
+
   componentDidMount: function() {
     window.setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
+
   render: function() {
     return (
       <div className="board">
@@ -75,6 +79,7 @@ var CommentList = React.createClass({
                         {comment.Text}
                       </Comment>);
     },
+
     render: function () {
         var commentNodes = this.props.comments.map(this.eachComment);
         return (<div className="commentList">
