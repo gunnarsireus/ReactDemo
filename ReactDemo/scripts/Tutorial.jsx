@@ -33,7 +33,7 @@
   },
   render: function() {
     return (
-      <div className="Board">
+      <div className="board">
         <h1>Comments</h1>
         <CommentList comments={this.state.comments}  editUrl={this.props.editUrl} deleteUrl={this.props.deleteUrl}/>
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
@@ -53,6 +53,9 @@ var CommentList = React.createClass({
         var xhr = new XMLHttpRequest();
         xhr.open('post', this.props.editUrl + "/" + id, true);
         xhr.send(data);
+        var arr = this.props.comments;
+        arr[id].Text = newText;
+        this.setState({ comments: arr });
     },
 
     handleCommentDelete: function (id) {
@@ -60,7 +63,10 @@ var CommentList = React.createClass({
         data.append('id', id);
         var xhr = new XMLHttpRequest();
         xhr.open('post', this.props.deleteUrl + "/" + id, true);
-        xhr.send(data); 
+        xhr.send(data);
+        var arr = this.props.comments;
+        arr.splice(id, 1);
+        this.setState({ comments: arr });
     },
 
     eachComment: function (comment,i) {
@@ -91,7 +97,6 @@ var Comment = React.createClass({
     },
     save: function () {
         this.props.updateCommentText(this.refs.newText.value, this.props.index);
-        //this.props.updateCommentText(this.refs.newText.value, this.props.index);
         this.setState({ editing: false });
     },
 
@@ -101,7 +106,7 @@ var Comment = React.createClass({
       return (
         <div className="commentContainer">
           <h2 className="commentAuthor">{this.props.author}</h2>
-          <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
+          <span className="commentText" dangerouslySetInnerHTML={{__html: rawMarkup}} />
           <button onClick={this.edit} className="btn-primary">Edit</button>
           <button onClick={this.remove} className="btn-danger">Remove</button>
         </div>
@@ -148,7 +153,7 @@ var CommentForm = React.createClass({
           <hr />
           <span>Post a comment</span>
           <br />
-          <input type="text" placeholder="Your name" ref="author" />
+          <input type="text" placeholder="Author name" ref="author" />
           <input type="text" placeholder="Say something..." ref="text" />
           <input type="submit" value="Post" />
           </form>
