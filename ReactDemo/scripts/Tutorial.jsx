@@ -8,7 +8,6 @@
             this.setState({ comments: data });
         }.bind(this);
         xhr.send();
-        console.log("hej");
     },
 
   handleCommentSubmit: function(comment) {
@@ -154,12 +153,9 @@ var CommentForm = React.createClass({
     render: function() {
         return (
           <form className="commentForm" onSubmit={this.handleSubmit}>
-          <br />
-          <hr />
-          <span>Post a comment</span>
-          <br />
-          <input type="text" placeholder="Author name" ref="author" />
-          <input type="text" placeholder="Say something..." ref="text" />
+          <strong>Post a comment</strong>
+          <input size="30" type="text" placeholder="Author name" ref="author" />
+          <input size="30"  type="text" placeholder="Say something..." ref="text" />
           <input type="submit" value="Post" />
           </form>
     );

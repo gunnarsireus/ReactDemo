@@ -15,7 +15,11 @@ select,
 textarea {
     max-width: 280px;
 }
+.commentForm {
+    background-color: lightpink;
+    padding: 5px;
 
+}
 .commentContainer {
 
     background-color: lightblue;
@@ -24,7 +28,7 @@ textarea {
 }
 
 .commentText {
-    background-color: green;
+    background-color: lightcyan;
 }
 
 .commentAuthor {
@@ -40,5 +44,19 @@ textarea {
    background-color: blueviolet;
    width: 300px;
     padding: 20px;
+}
+
+span {
+    display: block;
+    word-wrap:break-word;
+    width: 210px;
+    white-space: normal
+}
+
+textArea {
+    display: block;
+    word-wrap:break-word;
+    width: 210px;
+    white-space: normal
 }
 
