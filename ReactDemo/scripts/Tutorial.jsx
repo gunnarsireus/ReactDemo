@@ -2,12 +2,13 @@
 
     loadCommentsFromServer: function () {
         var xhr = new XMLHttpRequest();
-        xhr.open('get', this.props.url, true);
+        xhr.open("get", this.props.url, true);
         xhr.onload = function () {
             var data = JSON.parse(xhr.responseText);
             this.setState({ comments: data });
         }.bind(this);
         xhr.send();
+        console.log("hej");
     },
   handleCommentSubmit: function(comment) {
     var comments = this.state.comments;
@@ -15,11 +16,11 @@
     this.setState({comments: newComments});
 
     var data = new FormData();
-    data.append('Author', comment.Author);
-    data.append('Text', comment.Text);
+    data.append("Author", comment.Author);
+    data.append("Text", comment.Text);
 
     var xhr = new XMLHttpRequest();
-    xhr.open('post', this.props.submitUrl, true);
+    xhr.open("post", this.props.submitUrl, true);
     xhr.onload = function() {
       this.statics.loadCommentsFromServer();
     }.bind(this);
@@ -47,11 +48,11 @@ var CommentList = React.createClass({
 
     handleCommentEdit: function (newText, id) {
         var data = new FormData();
-        data.append('text', newText);
-        data.append('id', id);
+        data.append("text", newText);
+        data.append("id", id);
 
         var xhr = new XMLHttpRequest();
-        xhr.open('post', this.props.editUrl + "/" + id, true);
+        xhr.open("post", this.props.editUrl + "/" + id, true);
         xhr.send(data);
         var arr = this.props.comments;
         arr[id].Text = newText;
@@ -60,9 +61,9 @@ var CommentList = React.createClass({
 
     handleCommentDelete: function (id) {
         var data = new FormData();
-        data.append('id', id);
+        data.append("id", id);
         var xhr = new XMLHttpRequest();
-        xhr.open('post', this.props.deleteUrl + "/" + id, true);
+        xhr.open("post", this.props.deleteUrl + "/" + id, true);
         xhr.send(data);
         var arr = this.props.comments;
         arr.splice(id, 1);
@@ -92,8 +93,6 @@ var Comment = React.createClass({
     },
     remove: function () {
         this.props.deleteCommentText(this.props.index);
-        //console.log("Removing comment");
-        //this.props.deleteFromBoard(this.props.index);
     },
     save: function () {
         this.props.updateCommentText(this.refs.newText.value, this.props.index);
@@ -106,7 +105,8 @@ var Comment = React.createClass({
       return (
         <div className="commentContainer">
           <h2 className="commentAuthor">{this.props.author}</h2>
-          <span className="commentText" dangerouslySetInnerHTML={{__html: rawMarkup}} />
+          <span className="commentText" dangerouslySetInnerHTML={{__html: rawMarkup}} ></span>
+          <br/>
           <button onClick={this.edit} className="btn-primary">Edit</button>
           <button onClick={this.remove} className="btn-danger">Remove</button>
         </div>
@@ -120,7 +120,7 @@ var Comment = React.createClass({
                 <textArea ref="newText"  defaultValue={this.props.children}></textArea>
                <button onClick={this.save}   className="btn-success">Save</button>
             </div>
-    );
+       );
     },
 
     render: function () {
@@ -142,8 +142,8 @@ var CommentForm = React.createClass({
             return;
         }
         this.props.onCommentSubmit({Author: author, Text: text});
-        this.refs.author.value = '';
-        this.refs.text.value = '';
+        this.refs.author.value = "";
+        this.refs.text.value = "";
         return;
     },
     render: function() {
