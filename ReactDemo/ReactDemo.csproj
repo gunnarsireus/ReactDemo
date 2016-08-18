@@ -226,7 +226,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="js\components\" />
+    <Folder Include="js\dispatcher\" />
     <Folder Include="js\functions\" />
+    <Folder Include="js\stores\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
