@@ -5,14 +5,14 @@
         xhr.open('get', this.props.url, true);
         xhr.onload = function () {
             var data = JSON.parse(xhr.responseText);
-            this.setState({ data: data });
+            this.setState({ comments: data });
         }.bind(this);
         xhr.send();
     },
   handleCommentSubmit: function(comment) {
-    var comments = this.state.data;
+    var comments = this.state.comments;
     var newComments = comments.concat([comment]);
-    this.setState({data: newComments});
+    this.setState({comments: newComments});
 
     var data = new FormData();
     data.append('Author', comment.Author);
@@ -26,7 +26,7 @@
     xhr.send(data);
   },
   getInitialState: function() {
-    return { data: this.props.initialData };
+    return { comments: this.props.initialData };
   },
   componentDidMount: function() {
     window.setInterval(this.loadCommentsFromServer, this.props.pollInterval);
@@ -35,7 +35,7 @@
     return (
       <div className="Board">
         <h1>Comments</h1>
-        <CommentList data={this.state.data}  editUrl={this.props.editUrl} deleteUrl={this.props.deleteUrl}/>
+        <CommentList comments={this.state.comments}  editUrl={this.props.editUrl} deleteUrl={this.props.deleteUrl}/>
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
       </div>
     );
@@ -69,7 +69,7 @@ var CommentList = React.createClass({
                       </Comment>);
     },
     render: function () {
-        var commentNodes = this.props.data.map(this.eachComment);
+        var commentNodes = this.props.comments.map(this.eachComment);
         return (<div className="commentList">
           {commentNodes}
       </div>
