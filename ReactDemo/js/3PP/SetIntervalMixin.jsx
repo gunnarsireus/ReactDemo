@@ -24,8 +24,8 @@ var TickTock = React.createClass({
     render: function() {
         return (
             <p>
-    React has been running for {this.state.seconds} seconds.
-</p>
+              React has been running for {this.state.seconds} seconds.
+            </p>
         );
     }
 });

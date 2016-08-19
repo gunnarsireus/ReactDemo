@@ -37,10 +37,10 @@
     render: function() {
         return (
             <div className="board">
-    <h1>Comments</h1>
-    <CommentList comments={this.state.comments} editUrl={this.props.editUrl} deleteUrl={this.props.deleteUrl}/>
-    <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
-</div>
+              <h1>Comments</h1>
+              <CommentList comments={this.state.comments} editUrl={this.props.editUrl} deleteUrl={this.props.deleteUrl}/>
+              <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
+           </div>
         );
     }
 });
@@ -72,19 +72,16 @@ var CommentList = React.createClass({
     },
 
     eachComment: function(comment, i) {
-        return (<Comment author={comment
-            .Author} key={i} index={i} editUrl={this.props
-            .editUrl} deleteUrl={this.props
-            .deleteUrl} updateCommentText={this.handleCommentEdit} deleteCommentText={this.handleCommentDelete}>
-    {comment.Text}
-</Comment>);
+        return (<Comment author={comment.Author} key={i} index={i} editUrl={this.props.editUrl} deleteUrl={this.props.deleteUrl} updateCommentText={this.handleCommentEdit} deleteCommentText={this.handleCommentDelete}>
+                  {comment.Text}
+                </Comment>);
     },
 
     render: function() {
         const commentNodes = this.props.comments.map(this.eachComment);
         return (<div className="commentList">
-    {commentNodes}
-</div>
+                  {commentNodes}
+                </div>
         );
     }
 });
@@ -109,22 +106,22 @@ var Comment = React.createClass({
         const rawMarkup = converter.makeHtml(this.props.children.toString());
         return (
             <div className="commentContainer">
-    <h2 className="commentAuthor">{this.props.author}</h2>
-    <span className="commentText" dangerouslySetInnerHTML={{ __html: rawMarkup }} ></span>
-    <br/>
-    <button onClick={this.edit} className="btn-primary">Edit</button>
-    <button onClick={this.remove} className="btn-danger">Remove</button>
-</div>
+               <h2 className="commentAuthor">{this.props.author}</h2>
+               <span className="commentText" dangerouslySetInnerHTML={{ __html: rawMarkup }}></span>
+               <br />
+               <button onClick={this.edit} className="btn-primary">Edit</button>
+               <button onClick={this.remove} className="btn-danger">Remove</button>
+            </div>
         );
     },
 
     renderForm: function() {
         return (
             <div className="commentContainer">
-    <h2 className="commentAuthor">{this.props.author}</h2>
-    <textArea ref="newText" defaultValue={this.props.children}></textArea>
-    <button onClick={this.save} className="btn-success">Save</button>
-</div>
+              <h2 className="commentAuthor">{this.props.author}</h2>
+              <textArea ref="newText" defaultValue={this.props.children}></textArea>
+              <button onClick={this.save} className="btn-success">Save</button>
+            </div>
         );
     },
 
@@ -153,13 +150,11 @@ var CommentForm = React.createClass({
     render: function() {
         return (
             <form className="commentForm" onSubmit={this.handleSubmit}>
-    <p>
-        <strong>Post a comment</strong>
-    </p>
-    <input size="50" type="text" placeholder="Author name" ref="author"/>
-    <input size="50" type="text" placeholder="Say something..." ref="text"/>
-    <input type="submit" value="Post"/>
-</form>
+              <p><strong>Post a comment</strong></p>
+              <input size="50" type="text" placeholder="Author name" ref="author"/>
+              <input size="50" type="text" placeholder="Say something..." ref="text"/>
+              <input type="submit" value="Post"/>
+            </form>
         );
     }
 });
