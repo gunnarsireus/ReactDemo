@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 using System.Web.Optimization.React;
 
 namespace ReactDemo
@@ -12,7 +11,7 @@ namespace ReactDemo
                 "~/js/Tutorial.jsx",
                 "~/js/3PP/Showdown.js",
                 "~/js/3PP/SetIntervalMixin.jsx"
-            ));
+                ));
 
             // Forces files to be combined and minified in debug mode
             // Only used here to demonstrate how combination/minification works

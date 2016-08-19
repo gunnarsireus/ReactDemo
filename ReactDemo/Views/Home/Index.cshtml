@@ -6,15 +6,15 @@
 <html>
 <head>
     <title>Hello React</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-   @Html.React("TickTock", new { })
+@Html.React("TickTock", new {})
 <br/>
 <br/>
 
-    @Html.React("Board", new
+@Html.React("Board", new
 {
     initialData = Model,
     //initialData = new List<ReactDemo.Models.CommentModel>().ToArray(),
@@ -24,10 +24,10 @@
     deleteUrl = Url.Action("DeleteComment"),
     pollInterval = 2000
 })
-    <script src="https://fb.me/react-15.0.1.js"></script>
+<script src="https://fb.me/react-15.0.1.js"></script>
 <script src="https://fb.me/react-dom-15.0.1.js"></script>
-    @Scripts.Render("~/bundles/main")
-    @Html.ReactInitJavaScript()
+@Scripts.Render("~/bundles/main")
+@Html.ReactInitJavaScript()
 
 </body>
 </html>

@@ -1,6 +1,8 @@
 using React;
+using ReactDemo;
+using WebActivatorEx;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ReactDemo.ReactConfig), "Configure")]
+[assembly: PreApplicationStartMethod(typeof(ReactConfig), "Configure")]
 
 namespace ReactDemo
 {

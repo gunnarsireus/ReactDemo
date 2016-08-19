@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.UI;
 using ReactDemo.Models;
 
 namespace ReactDemo.Controllers
 {
-
     public class HomeController : Controller
     {
         private static readonly IList<CommentModel> _comments;
+
         static HomeController()
         {
             _comments = new List<CommentModel>
@@ -30,9 +27,10 @@ namespace ReactDemo.Controllers
                 {
                     Author = "Jordan Walke",
                     Text = "This is *another* comment"
-                },
+                }
             };
         }
+
         // GET: Home
         public ActionResult Index()
         {
@@ -51,12 +49,14 @@ namespace ReactDemo.Controllers
             _comments.Add(comment);
             return Content("Success :)");
         }
+
         [HttpPost]
         public ActionResult EditComment(string text, int id)
         {
             _comments[id].Text = text;
             return Content("Success :)");
         }
+
         [HttpPost]
         public ActionResult DeleteComment(int id)
         {
